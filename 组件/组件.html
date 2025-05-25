@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>初识vue</title>
+        <!--引入vue-->
+    <!-- <script type="text/javascript" src="../js/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    
+    <body>
+        <div id="app">
+            <school></school>
+            <student></student>
+          </div>
+        <script type="text/javascript">
+            Vue.config.productionTip = false
+            const student = Vue.extend({
+                template:'<div> <h2>学生名称：{{studentname}}</h2> </div>',
+                data(){
+                    return {
+                        studentname:"小明"
+                    }
+
+                }
+            })
+            const school = Vue.extend({
+                template:'<div> <h2>学校名称：{{schoolname}}</h2> <student></student></div>',
+                data(){
+                    return {
+                        schoolname:"小学学校"
+                    }
+
+                },
+                components:{
+                    student:student
+                }
+            })
+            var app = new Vue({
+                          el: '#app',
+                          components:{
+                            school:school
+                          }
+                        })
+            
+
+        </script>
+    </body>
+</html>
